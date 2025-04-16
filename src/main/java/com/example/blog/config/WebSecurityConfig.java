@@ -15,7 +15,7 @@ public class WebSecurityConfig {
     @Bean
     public WebSecurityCustomizer configure() {      // 스프링 시큐리티 기능 비활성화
         return web -> web.ignoring()
-                .requestMatchers("/static/**", "/books/**", "/api/**", "/test/**", "/new-article/**");
+                .requestMatchers("/static/**", "/books/**", "/api/**", "/test/**", "/new-article/**", "/api/external-comments/import","/api/import-articles");
     }
 
     // 특정 HTTP 요청에 대한 웹 기반 보안 구성
@@ -30,7 +30,7 @@ public class WebSecurityConfig {
                 .logout(auth -> auth.logoutSuccessUrl("/login") // 로그아웃 설정
                         .invalidateHttpSession(true)
                         .clearAuthentication(true))
-                .csrf(auth -> auth.disable());                  // csrf 비활성화
+                .csrf(auth -> auth.disable());// csrf 비활성화
         return httpSecurity.build();
     }
 
