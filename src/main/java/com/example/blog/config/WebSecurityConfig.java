@@ -15,14 +15,14 @@ public class WebSecurityConfig {
     @Bean
     public WebSecurityCustomizer configure() {      // 스프링 시큐리티 기능 비활성화
         return web -> web.ignoring()
-                .requestMatchers("/static/**", "/books/**", "/api/external", "/test/**", "/new-article/**");
+                .requestMatchers("/static/**", "/books/**", "/api/**", "/test/**", "/new-article/**");
     }
 
     // 특정 HTTP 요청에 대한 웹 기반 보안 구성
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(auth ->              // 인증, 인가 설정
-                        auth.requestMatchers("/login", "/signup", "/user", "/books/**", "/test/**").permitAll()
+                        auth.requestMatchers("/login", "/signup", "/user", "/books/**", "/test/**","/api/**").permitAll()
                                 .requestMatchers("/new-article").hasRole("ADMIN")
                                 .anyRequest().authenticated())
                 .formLogin(auth -> auth.loginPage("/login")     // 폼 기반 로그인 설정

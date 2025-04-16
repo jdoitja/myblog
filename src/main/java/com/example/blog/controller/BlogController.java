@@ -30,15 +30,15 @@ public class BlogController {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(savedArticle.toDto());
         }
-    @GetMapping("/api/articles")
-    public ResponseEntity<List<ArticleResponse>> findAllArticles() {
-        List<Article> articles = blogService.findArticles();
-
-        List<ArticleResponse> responseBody = articles.stream().map(article ->
-                        new ArticleResponse(article.getId(), article.getTitle(), article.getContent()))
-                .toList();
-        return ResponseEntity.ok(responseBody);
-    }
+//    @GetMapping("/api/articles")
+//    public ResponseEntity<List<ArticleResponse>> findAllArticles() {
+//        List<Article> articles = blogService.findArticles();
+//
+//        List<ArticleResponse> responseBody = articles.stream().map(article ->
+//                        new ArticleResponse(article.getId(), article.getTitle(), article.getContent()))
+//                .toList();
+//        return ResponseEntity.ok(responseBody);
+//    }
 
     @GetMapping("/api/articles/{id}")
     public Article getArticle(@PathVariable Long id) {

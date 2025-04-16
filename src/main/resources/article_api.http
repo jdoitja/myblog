@@ -28,3 +28,38 @@ Content-Type: application/json
   "title": "제목25",
   "content": "내용25"
 }
+
+### GET request to example server
+GET http://localhost:8080/api/articles
+
+###
+POST http://localhost:8080/api/articles/1/comments
+Content-Type: application/json
+
+{
+  "body": "좋은 글이네요"
+}
+
+
+###
+GET http://localhost:8080/api/comments/2
+
+###
+PUT http://localhost:8080/api/comments/2
+Content-Type: application/json
+
+{
+  "body": "안좋은 글이네요"
+}
+
+###
+DELETE http://localhost:8080/api/comments/2
+
+###
+GET http://localhost:8080/api/articles/1/comments
+
+###
+POST http://localhost:8080/api/import-articles
+
+###
+POST http://localhost:8080/api/external-comments/import
